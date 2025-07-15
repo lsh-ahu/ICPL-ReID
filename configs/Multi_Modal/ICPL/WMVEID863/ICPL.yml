@@ -1,0 +1,99 @@
+MODEL:
+  PRETRAIN_CHOICE: 'imagenet'
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+  NAME: 'ViT-B-16'
+  STRIDE_SIZE: [16, 16]
+  ID_LOSS_WEIGHT : 1.0
+  TRIPLET_LOSS_WEIGHT : 1.0
+  I2T_LOSS_WEIGHT : 1.0
+  VISUAL_BRANCH: 'multi' # single multi
+  TEXT_BRANCH: 'multi' # single multi
+
+  MLP_ADAPTER: True # True False
+  ADAPTER: 'parallel_adapter'
+  MLP_ADP_MID_DIM: 768
+  MLP_ADP_SCALE: 1.0
+  I2P_LOSS: 0.9
+  I2TCE_LOSS: 0.1
+
+  CM:
+    USE_HARD: False
+    TEMP: 0.05
+    MOMENTUM: 0.1
+    CHANGE_SCALE: 0.1
+  PROMPT_NUM: 4 # 1 2 4 8 16 32 64
+
+TSNE_VIS: False
+RESULT_VIS: False
+STAGE_SIM_VIS: False
+CAM_VIS: False
+
+INPUT:
+  SIZE_TRAIN: [128, 256]
+  SIZE_TEST: [128, 256]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+
+SOLVER:
+  SAVE_CHECKPOINT: True
+  PROMPT_LR: 0.00035
+  PROMPT_WEIGHT_DECAY_BIAS: 1e-4
+  IMS_PER_BATCH: 64
+  OPTIMIZER_NAME: "Adam"
+  BASE_LR: 0.00035
+  SCHEDULER: 'step' # step cosine cosine100
+  WARMUP_METHOD: 'linear'
+  WARMUP_ITERS: 10
+  WARMUP_FACTOR: 0.1
+  MOMENTUM: 0.9
+  WEIGHT_DECAY: 0.0005
+  WEIGHT_DECAY_BIAS: 0.0005
+  LARGE_FC_LR: False
+  MAX_EPOCHS: 120
+  CHECKPOINT_PERIOD: 200
+  LOG_PERIOD: 10
+  EVAL_PERIOD: 1
+  BIAS_LR_FACTOR: 2
+  STEPS: [30, 50]
+  GAMMA: 0.1
+
+TEST:
+  EVAL: True
+  IMS_PER_BATCH: 256
+  RE_RANKING: False
+  WEIGHT: ''
+  NECK_FEAT: 'before'
+  # NECK_FEAT: 'after'
+  FEAT_NORM: 'yes'
+
+DATASETS:
+  # NAMES: ('MSVR310')
+
+  # NAMES: ('RGBNT201')
+
+  # NAMES: ('MARKET_RGBNT')
+
+  NAMES: ('WMVEID863')
+
+  # NAMES: ('RGBN300')
+
+  # NAMES: ('RGBNT100')
+
+  ROOT_DIR: ('./data')
+
+DATALOADER:
+  SAMPLER: 'softmax_triplet'
+  NUM_INSTANCE: 4
+  NUM_WORKERS: 8
+
+OUTPUT_DIR: './output/ICPL/'
+
+# CUDA_VISIBLE_DEVICES=0 python train.py --config_file configs/Multi_Modal/ICPL/WMVEID863/ICPL.yml
+
+# CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/WMVEID863/ICPL.yml
+
