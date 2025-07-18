@@ -5,12 +5,15 @@ Official PyTorch implementation of the paper:
 <!-- Authors: [Shihao Li], [Chenglong Li], [Aihua Zheng], [Jin Tang], [Bin Luo]. -->
 Authors: [Shihao Li, Chenglong Li, Aihua Zheng, Jin Tang, Bin Luo].
 
-Accpected by [IEEE TRANSACTIONS ON MULTIMEDIA], [2025]  
+Accpected by [IEEE Transactions on Multimedia], [2025]  
 [[Paper]](https://arxiv.org/pdf/2505.17821) 
 
 ---
 
 ## 📌 Abstract
+
+![framework](./assets/framework_icpl.png) <!-- optional -->
+
 Multi-spectral object re-identification (ReID) brings a new perception perspective for smart city and intelligent transportation applications, effectively addressing challenges from complex illumination and adverse weather. However, complex
 modal differences between heterogeneous spectra pose challenges to efficiently utilizing complementary and discrepancy of spectra information. Most existing methods fuse spectral data through intricate modal interaction modules, lacking fine-grained semantic understanding of spectral information (e.g., text descriptions, part masks, and object keypoints). To solve this challenge, we propose a novel Identity-Conditional text Prompt Learning framework (ICPL), which exploits the powerful cross-modal alignment capability of CLIP, to unify different spectral visual features from text semantics. Specifically, we first propose the online prompt learning using learnable text prompt as the
 identity-level semantic center to bridge the identity semantics of different spectra in online manner. Then, in lack of concrete
@@ -18,7 +21,6 @@ text descriptions, we propose the multi-spectral identity-condition module to us
 In addition, to adapt to small-scale multi-spectral data and mitigate style differences between spectra, we propose multi-spectral adapter that employs a low-rank adaption method to learn spectra-specific features. Comprehensive experiments on
 5 benchmarks, including RGBNT201, Market-MM, MSVR310, RGBN300, and RGBNT100, demonstrate that the proposed method outperforms the state-of-the-art methods.
 
-![framework](./assets/framework_icpl.png) <!-- optional -->
 ![framework](./assets/experiment_icpl.png) <!-- optional -->
 
 ---
