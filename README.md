@@ -5,8 +5,14 @@ Official PyTorch implementation of the paper:
 <!-- Authors: [Shihao Li], [Chenglong Li], [Aihua Zheng], [Jin Tang], [Bin Luo]. -->
 Authors: [Shihao Li, Chenglong Li, Aihua Zheng, Jin Tang, Bin Luo].
 
-Accpected by [IEEE Transactions on Multimedia], [2025]  
+Accepted by [IEEE Transactions on Multimedia], [2025]  
 [[Paper]](https://ieeexplore.ieee.org/document/11208600) [[arXiv]](https://arxiv.org/pdf/2505.17821) 
+
+---
+
+🚀 NEWS!!! 2026-02-09: We release the model weights of RGBNT201 and MSVR310.
+
+🚀 NEWS!!! 2026-02-09: We add a Google Drive share link for RGBNT100 dataset.
 
 ---
 
@@ -46,7 +52,7 @@ pip install -r requirement.txt
 Download the datasets, and then unzip them to `./data`:
 * RGBNT201: [Google Drive](https://drive.google.com/drive/folders/1EscBadX-wMAT56_It5lXY-S3-b5nK1wH?usp=sharing)
 * MSVR310: [Google Drive](https://drive.google.com/file/d/1IxI-fGiluPO_Ies6YjDHeTEuVYhFdYwD/view?usp=drive_link)
-* RGBNT100: [Baidu Pan](https://pan.baidu.com/s/1xqqh7N4Lctm3RcUdskG0Ug) (Code: rjin)
+* RGBNT100: [Baidu Pan](https://pan.baidu.com/s/1xqqh7N4Lctm3RcUdskG0Ug) (Code: rjin) [Google Drive](https://drive.google.com/file/d/1R4XtbfnwTYyTvaTwrEx-pRCK2tApDWjj/view?usp=sharing)
 * WMVEID863: [Google Drive](https://drive.google.com/file/d/186Ep0YgHY0a8BQ1Z59HP1D2-kZazbH02/view?usp=drive_link)
 * Market-MM: [Google Drive](https://drive.google.com/drive/folders/1EscBadX-wMAT56_It5lXY-S3-b5nK1wH)
 
@@ -75,20 +81,48 @@ data/
 │   └── gallery/
 ```
 
-### 🚀 Training & 🧪 Evaluation
+### 🚀 Training
 
 ```
 # RGBNT201 
 CUDA_VISIBLE_DEVICES=0 python train.py --config_file configs/Multi_Modal/ICPL/RGBNT201/ICPL.yml
-CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/RGBNT201/ICPL.yml
 
 # MSVR310
 CUDA_VISIBLE_DEVICES=0 python train.py --config_file configs/Multi_Modal/ICPL/MSVR310/ICPL.yml
-CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/MSVR310/ICPL.yml
 
 # RGBNT100
 CUDA_VISIBLE_DEVICES=0 python train.py --config_file configs/Multi_Modal/ICPL/RGBNT100/ICPL.yml
-CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/RGBNT100/ICPL.yml
+
+```
+
+### 🧪 Evaluation
+
+Download the following PTH file:
+
+* RGBNT201: [Google Drive](https://drive.google.com/file/d/1LJ9PcMbes5JZ5qdkZfIidfJN5V9luOVB/view?usp=sharing)
+
+* MSVR310: [Google Drive](https://drive.google.com/file/d/1y67WHpOoOPHe3D2iwfX7vjQlx--zWPrs/view?usp=sharing)
+
+Modify the TEST.WEIGHT in the config file to the PTH path:
+
+```
+TEST:
+  EVAL: True
+  IMS_PER_BATCH: 256
+  RE_RANKING: False
+  WEIGHT: 'your/path/*.pth'
+  NECK_FEAT: 'before'
+  FEAT_NORM: 'yes'
+```
+
+Run the following shell command:
+
+```
+# RGBNT201 
+CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/RGBNT201/ICPL.yml
+
+# MSVR310
+CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/MSVR310/ICPL.yml
 
 ```
 
