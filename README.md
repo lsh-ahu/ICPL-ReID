@@ -131,7 +131,7 @@ CUDA_VISIBLE_DEVICES=0 python test.py --config_file configs/Multi_Modal/ICPL/MSV
 If you find our work helpful, please consider citing:
 
 ```
-@article{11208600,
+@article{li2026icpl,
   author={Li, Shihao and Li, Chenglong and Zheng, Aihua and Tang, Jin and Luo, Bin},
   journal={IEEE Transactions on Multimedia}, 
   title={ICPL-ReID: Identity-Conditional Prompt Learning for Multi-Spectral Object Re-Identification}, 
