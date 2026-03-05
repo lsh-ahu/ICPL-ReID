@@ -5,8 +5,9 @@ Official PyTorch implementation of the paper:
 <!-- Authors: [Shihao Li], [Chenglong Li], [Aihua Zheng], [Jin Tang], [Bin Luo]. -->
 Authors: [Shihao Li, Chenglong Li, Aihua Zheng, Jin Tang, Bin Luo].
 
-Accepted by [IEEE Transactions on Multimedia], [2025]  
-[[Paper]](https://ieeexplore.ieee.org/document/11208600) [[arXiv]](https://arxiv.org/pdf/2505.17821) 
+Accepted by [IEEE Transactions on Multimedia], [2025], [CCF-A]
+
+[[Paper]](https://ieeexplore.ieee.org/document/11208600) 
 
 ---
 
